@@ -1,0 +1,652 @@
+/* ============================================
+   BIBLE PAGE STYLES
+   ============================================ */
+
+.bible-page {
+  padding: 24px;
+}
+
+/* Header */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #1f2937;
+  margin: 0;
+}
+
+.translation-select {
+  padding: 8px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 20px;
+  border: none;
+  background: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+  border-bottom: 2px solid transparent;
+  transition: all 0.2s;
+}
+
+.tab-btn:hover {
+  color: #1f2937;
+}
+
+.tab-btn.active {
+  color: #8B4513;
+  border-bottom-color: #8B4513;
+}
+
+.tab-btn .icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* Bible Reader Layout */
+.bible-reader-layout {
+  display: grid;
+  grid-template-columns: 280px 1fr 320px;
+  gap: 24px;
+  min-height: 500px;
+}
+
+@media (max-width: 1200px) {
+  .bible-reader-layout {
+    grid-template-columns: 1fr;
+  }
+  .notes-panel {
+    display: none;
+  }
+}
+
+/* Books List */
+.books-list {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.books-list h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #6b7280;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 12px;
+}
+
+.books-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.book-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 4px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 12px;
+}
+
+.book-btn:hover {
+  border-color: #8B4513;
+  background: #f5f0eb;
+}
+
+.book-btn.active {
+  border-color: #8B4513;
+  background: #f5f0eb;
+  color: #8B4513;
+}
+
+.book-btn .book-code {
+  font-weight: 700;
+  font-size: 14px;
+}
+
+.book-btn .book-name {
+  font-size: 10px;
+  color: #6b7280;
+  text-align: center;
+}
+
+/* Reader Container */
+.reader-container {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.reader-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.reader-header h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.chapter-nav {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.nav-btn {
+  padding: 6px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.nav-btn:hover:not(:disabled) {
+  background: #f3f4f6;
+}
+
+.nav-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.nav-btn .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.chapter-select {
+  padding: 6px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+}
+
+/* Bible Reader */
+.bible-reader {
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.chapter-title {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.verses-container {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.verse-item {
+  display: flex;
+  gap: 12px;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.verse-item:hover {
+  background: #f5f0eb;
+}
+
+.verse-number {
+  font-weight: 600;
+  color: #8B4513;
+  min-width: 30px;
+  font-size: 14px;
+}
+
+.verse-text {
+  color: #1f2937;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* Notes Panel */
+.notes-panel {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+/* Search */
+.bible-search {
+  padding: 16px;
+}
+
+.search-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.search-input-wrapper {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input {
+  width: 100%;
+  padding: 12px 40px 12px 40px;
+  border: 2px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 16px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-input:focus {
+  border-color: #8B4513;
+}
+
+.search-icon {
+  position: absolute;
+  left: 12px;
+  color: #9ca3af;
+  width: 20px;
+  height: 20px;
+}
+
+.clear-btn {
+  position: absolute;
+  right: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #9ca3af;
+  padding: 4px;
+}
+
+.search-btn {
+  padding: 12px 32px;
+  background: #8B4513;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s;
+  white-space: nowrap;
+}
+
+.search-btn:hover:not(:disabled) {
+  background: #6f3710;
+}
+
+.search-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Results */
+.results-container {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.results-header {
+  margin-bottom: 12px;
+}
+
+.results-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-height: 400px;
+  overflow-y: auto;
+}
+
+.result-item {
+  padding: 12px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.result-item:hover {
+  background: #f5f0eb;
+}
+
+.result-reference {
+  font-weight: 600;
+  color: #8B4513;
+  margin-bottom: 4px;
+}
+
+.result-text {
+  color: #1f2937;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* Empty state */
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: #6b7280;
+}
+
+.empty-state .icon {
+  width: 48px;
+  height: 48px;
+  color: #d1d5db;
+}
+
+.empty-state .icon.large {
+  width: 64px;
+  height: 64px;
+}
+
+.empty-state h3 {
+  margin-top: 16px;
+  color: #1f2937;
+}
+
+/* Verse of the Day */
+.verse-of-the-day {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  margin-bottom: 24px;
+}
+
+.verse-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: #6b7280;
+  font-size: 14px;
+}
+
+.verse-content blockquote {
+  margin: 0;
+  padding: 16px 20px;
+  border-left: 4px solid #8B4513;
+  background: #f5f0eb;
+  border-radius: 0 8px 8px 0;
+}
+
+.verse-text {
+  font-size: 18px;
+  line-height: 1.8;
+  color: #1f2937;
+  font-style: italic;
+}
+
+.verse-reference {
+  margin-top: 12px;
+  font-size: 14px;
+  color: #6b7280;
+  font-style: normal;
+  font-weight: 500;
+}
+
+.refresh-btn {
+  padding: 6px 12px;
+  background: none;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 13px;
+  color: #6b7280;
+  transition: all 0.2s;
+}
+
+.refresh-btn:hover {
+  background: #f3f4f6;
+}
+
+.refresh-btn .icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Notes */
+.personal-notes-panel .panel-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.personal-notes-panel .panel-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+  padding: 4px;
+}
+
+.close-btn .icon {
+  width: 20px;
+  height: 20px;
+}
+
+.add-note-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: #8B4513;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+  margin-bottom: 16px;
+}
+
+.add-note-btn:hover {
+  background: #6f3710;
+}
+
+.add-note-btn .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.note-form {
+  background: #f9fafb;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.note-textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 14px;
+  font-family: inherit;
+  resize: vertical;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.note-textarea:focus {
+  border-color: #8B4513;
+}
+
+.form-actions {
+  display: flex;
+  gap: 8px;
+  margin-top: 12px;
+  justify-content: flex-end;
+}
+
+.cancel-btn {
+  padding: 6px 16px;
+  background: #f3f4f6;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.cancel-btn:hover {
+  background: #e5e7eb;
+}
+
+.save-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 6px 16px;
+  background: #8B4513;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background 0.2s;
+}
+
+.save-btn:hover {
+  background: #6f3710;
+}
+
+.save-btn .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.note-item {
+  padding: 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  margin-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.note-content {
+  flex: 1;
+  margin: 0;
+  color: #1f2937;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.note-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.note-actions button {
+  padding: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #6b7280;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.note-actions button:hover {
+  background: #f3f4f6;
+}
+
+.edit-btn:hover {
+  color: #8B4513;
+}
+
+.delete-btn:hover {
+  color: #dc2626;
+}
+
+.edit-btn .icon,
+.delete-btn .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.no-notes {
+  color: #6b7280;
+  text-align: center;
+  padding: 20px;
+}

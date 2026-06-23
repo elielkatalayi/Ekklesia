@@ -1,0 +1,806 @@
+/* ============================================
+   HYMNS PAGE STYLES
+   ============================================ */
+
+.hymns-page {
+  padding: 24px;
+}
+
+/* Header */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #1f2937;
+  margin: 0;
+}
+
+.header-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.btn .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.btn-primary {
+  background: #8B4513;
+  color: white;
+}
+
+.btn-primary:hover {
+  background: #6f3710;
+}
+
+/* Filters Bar */
+.filters-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding: 12px 16px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.filter-select {
+  padding: 8px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  background: white;
+  cursor: pointer;
+}
+
+.filter-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.filter-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: none;
+  background: none;
+  font-size: 14px;
+  color: #6b7280;
+  cursor: pointer;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.filter-btn:hover {
+  background: #f3f4f6;
+}
+
+.filter-btn.active {
+  background: #f5f0eb;
+  color: #8B4513;
+}
+
+.filter-btn .icon {
+  width: 16px;
+  height: 16px;
+}
+
+/* Hymns Grid */
+.hymns-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+.hymn-card {
+  background: white;
+  border-radius: 12px;
+  padding: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid #e5e7eb;
+}
+
+.hymn-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+.hymn-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 12px;
+}
+
+.hymn-number {
+  width: 40px;
+  height: 40px;
+  background: #f5f0eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #8B4513;
+  font-size: 16px;
+}
+
+.hymn-card-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.hymn-card-actions button {
+  padding: 6px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #6b7280;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.hymn-card-actions button:hover {
+  background: #f3f4f6;
+}
+
+.favorite-btn .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.favorite-btn .icon.filled {
+  fill: #ef4444;
+  color: #ef4444;
+}
+
+.hymn-card-body {
+  flex: 1;
+}
+
+.hymn-title {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 4px 0;
+}
+
+.hymn-book {
+  font-size: 12px;
+  color: #6b7280;
+  display: block;
+}
+
+.hymn-author {
+  font-size: 12px;
+  color: #9ca3af;
+  display: block;
+}
+
+.hymn-card-footer {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.hymn-chorus-preview {
+  font-size: 13px;
+  color: #6b7280;
+  font-style: italic;
+}
+
+/* Hymn Viewer */
+.hymn-viewer {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.viewer-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.close-btn {
+  padding: 8px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #6b7280;
+  border-radius: 50%;
+  transition: all 0.2s;
+}
+
+.close-btn:hover {
+  background: #f3f4f6;
+}
+
+.close-btn .icon {
+  width: 24px;
+  height: 24px;
+}
+
+.viewer-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: white;
+  font-size: 13px;
+  color: #1f2937;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.action-btn:hover {
+  background: #f3f4f6;
+}
+
+.action-btn.danger:hover {
+  background: #fef2f2;
+  border-color: #dc2626;
+  color: #dc2626;
+}
+
+.action-btn .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.action-btn .icon.filled {
+  fill: #ef4444;
+  color: #ef4444;
+}
+
+.viewer-body {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.hymn-header {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  margin-bottom: 24px;
+}
+
+.hymn-number-large {
+  width: 60px;
+  height: 60px;
+  background: #f5f0eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  color: #8B4513;
+  font-size: 24px;
+  flex-shrink: 0;
+}
+
+.hymn-title-large {
+  font-size: 28px;
+  font-weight: bold;
+  color: #1f2937;
+  margin: 0 0 4px 0;
+}
+
+.hymn-book-badge {
+  display: inline-block;
+  padding: 4px 12px;
+  background: #f5f0eb;
+  border-radius: 12px;
+  font-size: 12px;
+  color: #8B4513;
+}
+
+.hymn-author-text {
+  font-size: 14px;
+  color: #6b7280;
+  margin-top: 4px;
+}
+
+.hymn-lyrics {
+  padding: 16px;
+  background: #f9fafb;
+  border-radius: 8px;
+  font-size: 16px;
+  line-height: 1.8;
+  color: #1f2937;
+}
+
+.hymn-chorus-section {
+  margin-bottom: 20px;
+}
+
+.hymn-chorus-section h3 {
+  font-size: 14px;
+  font-weight: 600;
+  color: #8B4513;
+  margin-bottom: 8px;
+}
+
+.chorus-text {
+  font-style: italic;
+  padding-left: 16px;
+  border-left: 3px solid #8B4513;
+}
+
+.hymn-media {
+  margin-top: 20px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.media-link {
+  color: #8B4513;
+  text-decoration: none;
+}
+
+.media-link:hover {
+  text-decoration: underline;
+}
+
+/* Search */
+.hymn-search {
+  padding: 16px;
+}
+
+.recent-searches {
+  margin-top: 16px;
+}
+
+.recent-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.recent-tag {
+  padding: 4px 12px;
+  background: #f3f4f6;
+  border: none;
+  border-radius: 12px;
+  font-size: 13px;
+  color: #1f2937;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.recent-tag:hover {
+  background: #e5e7eb;
+}
+
+.search-results {
+  margin-top: 24px;
+}
+
+.results-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+.hymn-result-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.hymn-result-card:hover {
+  border-color: #8B4513;
+  background: #f5f0eb;
+}
+
+.result-number {
+  font-weight: bold;
+  color: #8B4513;
+  min-width: 30px;
+}
+
+.result-info {
+  flex: 1;
+}
+
+.result-title {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.result-book {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.result-icon {
+  color: #9ca3af;
+  width: 18px;
+  height: 18px;
+}
+
+/* Favorites */
+.hymn-favorites {
+  padding: 16px;
+}
+
+.favorites-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.favorites-count {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.hymn-favorite-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.hymn-favorite-card:hover {
+  border-color: #8B4513;
+  background: #f5f0eb;
+}
+
+.favorite-number {
+  font-weight: bold;
+  color: #8B4513;
+  min-width: 30px;
+}
+
+.favorite-info {
+  flex: 1;
+}
+
+.favorite-title {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+}
+
+.favorite-book {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.remove-favorite {
+  padding: 4px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #ef4444;
+}
+
+.remove-favorite .icon {
+  width: 18px;
+  height: 18px;
+  fill: #ef4444;
+}
+
+/* Playlists */
+.hymn-playlists {
+  padding: 16px;
+}
+
+.playlists-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+}
+
+.playlist-form {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 16px;
+  padding: 16px;
+  background: #f9fafb;
+  border-radius: 8px;
+}
+
+.playlist-input {
+  flex: 1;
+  padding: 8px 16px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+}
+
+.playlist-input:focus {
+  border-color: #8B4513;
+}
+
+.playlists-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.playlist-card {
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 12px;
+  padding: 16px;
+  transition: all 0.2s;
+}
+
+.playlist-card:hover {
+  border-color: #8B4513;
+}
+
+.playlist-card.active {
+  border-color: #8B4513;
+  background: #f5f0eb;
+}
+
+.playlist-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.playlist-card-header h3 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+  cursor: pointer;
+}
+
+.playlist-actions {
+  display: flex;
+  gap: 4px;
+}
+
+.playlist-actions button {
+  padding: 4px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #6b7280;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.playlist-actions button:hover {
+  background: #f3f4f6;
+}
+
+.playlist-edit-input {
+  flex: 1;
+  padding: 4px 8px;
+  border: 1px solid #8B4513;
+  border-radius: 4px;
+  font-size: 14px;
+  outline: none;
+}
+
+.playlist-hymns {
+  margin-top: 8px;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.playlist-hymn-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 6px 8px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.playlist-hymn-item:hover {
+  background: #f3f4f6;
+}
+
+.item-position {
+  font-size: 12px;
+  color: #9ca3af;
+  min-width: 24px;
+}
+
+.item-title {
+  flex: 1;
+  font-size: 14px;
+}
+
+.item-icon {
+  width: 16px;
+  height: 16px;
+  color: #9ca3af;
+}
+
+.empty-hymns {
+  font-size: 14px;
+  color: #9ca3af;
+  text-align: center;
+  padding: 12px;
+}
+
+/* Empty states */
+.hymns-empty,
+.empty-playlists {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 60px 20px;
+  color: #6b7280;
+}
+
+.hymns-empty .icon,
+.empty-playlists .icon {
+  width: 48px;
+  height: 48px;
+  color: #d1d5db;
+}
+
+.hymns-empty .icon.large,
+.empty-playlists .icon.large {
+  width: 64px;
+  height: 64px;
+}
+
+.hymns-empty h3,
+.empty-playlists h3 {
+  margin-top: 16px;
+  color: #1f2937;
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+  margin-top: 24px;
+  padding-top: 16px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.pagination-btn {
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.pagination-btn:hover:not(:disabled) {
+  background: #f3f4f6;
+}
+
+.pagination-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination-btn .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.pagination-info {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.pagination-total {
+  font-size: 12px;
+  color: #9ca3af;
+  margin-left: 4px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .filters-bar {
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+  }
+
+  .filter-actions {
+    flex-wrap: wrap;
+  }
+
+  .filter-btn {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .hymns-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .results-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .favorites-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .playlists-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hymn-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .viewer-actions {
+    justify-content: center;
+  }
+
+  .header-actions {
+    flex-wrap: wrap;
+  }
+}

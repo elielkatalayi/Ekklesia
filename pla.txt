@@ -1,0 +1,348 @@
+frontend/
+├── public/
+│   ├── favicon.ico
+│   └── index.html
+├── src/
+│   ├── api/
+│   │   ├── axios.config.js
+│   │   ├── auth.api.js
+│   │   ├── church.api.js
+│   │   ├── hymns.api.js
+│   │   ├── bible.api.js
+│   │   └── noise.api.js
+│   │
+│   ├── components/
+│   │   ├── common/
+│   │   │   ├── Layout.jsx
+│   │   │   ├── Header.jsx
+│   │   │   ├── Footer.jsx
+│   │   │   ├── Sidebar.jsx
+│   │   │   └── Loading.jsx
+│   │   │
+│   │   ├── auth/
+│   │   │   ├── LoginPage.jsx
+│   │   │   ├── OTPVerification.jsx
+│   │   │   └── ChooseChurch.jsx
+│   │   │
+│   │   ├── dashboard/
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── StatsCards.jsx
+│   │   │   └── RecentActivity.jsx
+│   │   │
+│   │   ├── bible/
+│   │   │   ├── BibleReader.jsx
+│   │   │   ├── BibleSearch.jsx
+│   │   │   └── VerseOfTheDay.jsx
+│   │   │
+│   │   ├── hymns/
+│   │   │   ├── HymnList.jsx
+│   │   │   ├── HymnViewer.jsx
+│   │   │   ├── HymnSearch.jsx
+│   │   │   ├── HymnFavorites.jsx
+│   │   │   └── HymnPlaylist.jsx
+│   │   │
+│   │   ├── services/
+│   │   │   ├── ServiceList.jsx
+│   │   │   ├── ServiceOrder.jsx
+│   │   │   └── ServiceBuilder.jsx
+│   │   │
+│   │   ├── announcements/
+│   │   │   ├── AnnouncementList.jsx
+│   │   │   └── AnnouncementForm.jsx
+│   │   │
+│   │   ├── church/
+│   │   │   ├── ChurchSettings.jsx
+│   │   │   ├── MembersList.jsx
+│   │   │   └── MemberManagement.jsx
+│   │   │
+│   │   └── noise/
+│   │       ├── NoiseMonitor.jsx
+│   │       ├── NoiseChart.jsx
+│   │       ├── NoiseAlerts.jsx
+│   │       └── NoiseSettings.jsx
+│   │
+│   ├── context/
+│   │   ├── AuthContext.jsx
+│   │   ├── ChurchContext.jsx
+│   │   └── SocketContext.jsx
+│   │
+│   ├── hooks/
+│   │   ├── useAuth.js
+│   │   ├── useSocket.js
+│   │   ├── useNoise.js
+│   │   └── useHymns.js
+│   │
+│   ├── pages/
+│   │   ├── HomePage.jsx
+│   │   ├── DashboardPage.jsx
+│   │   ├── BiblePage.jsx
+│   │   ├── HymnsPage.jsx
+│   │   ├── ServicesPage.jsx
+│   │   ├── AnnouncementsPage.jsx
+│   │   ├── ChurchPage.jsx
+│   │   ├── NoisePage.jsx
+│   │   └── SettingsPage.jsx
+│   │
+│   ├── utils/
+│   │   ├── constants.js
+│   │   ├── formatters.js
+│   │   └── helpers.js
+│   │
+│   ├── styles/
+│   │   └── index.css
+│   │
+│   ├── App.jsx
+│   ├── AppRoutes.jsx
+│   └── index.js
+│
+├── .env
+├── .env.example
+├── package.json
+├── tailwind.config.js
+├── postcss.config.js
+├── vite.config.js
+└── README.md on commence par quoi et quoi liste moi c que on doit faire pour avoir le code complete stp  pas de code d'abord
+
+
+
+
+
+
+
+
+
+
+## 📋 Liste complète des tâches à réaliser
+
+### **Phase 1 : Configuration & Structure de base** 🔧
+- [ ] **1.1** Initialiser le projet React avec Vite
+- [ ] **1.2** Installer toutes les dépendances
+- [ ] **1.3** Configurer TailwindCSS
+- [ ] **1.4** Créer la structure de dossiers
+- [ ] **1.5** Configurer les variables d'environnement
+- [ ] **1.6** Configurer Axios pour les appels API
+- [ ] **1.7** Mettre en place le routing (React Router)
+
+### **Phase 2 : Authentification** 🔐
+- [ ] **2.1** Page de connexion (numéro de téléphone)
+- [ ] **2.2** Page de vérification OTP
+- [ ] **2.3** Page de choix d'église
+- [ ] **2.4** Système de gestion du token JWT
+- [ ] **2.5** Context d'authentification (AuthContext)
+- [ ] **2.6** Routes protégées (PrivateRoute)
+
+### **Phase 3 : Layout & Navigation** 🏗️
+- [ ] **3.1** Layout principal avec Sidebar
+- [ ] **3.2** Header avec informations utilisateur
+- [ ] **3.3** Menu de navigation (Dashboard, Bible, Cantiques, etc.)
+- [ ] **3.4** Footer
+- [ ] **3.5** Responsive design (mobile, tablet, desktop)
+
+### **Phase 4 : Dashboard** 📊
+- [ ] **4.1** Page Dashboard
+- [ ] **4.2** Cartes de statistiques (membres, cantiques, services, etc.)
+- [ ] **4.3** Activité récente
+- [ ] **4.4** Graphiques (Recharts)
+- [ ] **4.5** Cantique du jour / Verset du jour
+
+### **Phase 5 : Bible** 📖
+- [ ] **5.1** Liste des livres bibliques
+- [ ] **5.2** Lecteur de Bible (chapitres/versets)
+- [ ] **5.3** Recherche de versets
+- [ ] **5.4** Verset du jour
+- [ ] **5.5** Notes personnelles sur les versets
+
+### **Phase 6 : Cantiques** 🎵
+- [ ] **6.1** Liste des cantiques par recueil
+- [ ] **6.2** Recherche de cantiques (titre, numéro, paroles)
+- [ ] **6.3** Visualisation d'un cantique (paroles complètes)
+- [ ] **6.4** Ajout aux favoris
+- [ ] **6.5** Playlists (création, ajout, suppression)
+- [ ] **6.6** Cantique du jour
+
+### **Phase 7 : Services (Cultes)** ⛪
+- [ ] **7.1** Liste des services (cultes)
+- [ ] **7.2** Création d'un service (modérateur+)
+- [ ] **7.3** Ordre du culte (drag & drop)
+- [ ] **7.4** Publication d'un service
+- [ ] **7.5** Visualisation d'un service
+
+### **Phase 8 : Annonces** 📣
+- [ ] **8.1** Liste des annonces
+- [ ] **8.2** Création d'une annonce (modérateur+)
+- [ ] **8.3** Édition d'une annonce
+- [ ] **8.4** Suppression d'une annonce
+
+### **Phase 9 : Gestion de l'Église** 🏛️
+- [ ] **9.1** Liste des membres
+- [ ] **9.2** Profil utilisateur
+- [ ] **9.3** Gestion des rôles (pasteur, modérateur, diacre, membre)
+- [ ] **9.4** Paramètres de l'église
+- [ ] **9.5** Upload d'avatar et logo
+
+### **Phase 10 : Gestion du Bruit** 🔊
+- [ ] **10.1** Moniteur de bruit en temps réel
+- [ ] **10.2** Graphique d'historique du bruit
+- [ ] **10.3** Alertes de bruit
+- [ ] **10.4** Paramètres de seuils personnalisés
+
+### **Phase 11 : Temps Réel (Socket.IO)** ⚡
+- [ ] **11.1** Connexion WebSocket
+- [ ] **11.2** Notifications en temps réel
+- [ ] **11.3** Mise à jour en direct des annonces
+- [ ] **11.4** Mise à jour en direct de l'ordre du culte
+- [ ] **11.5** Indicateur de présence (en ligne/hors ligne)
+
+### **Phase 12 : Optimisations & Finitions** ✨
+- [ ] **12.1** Gestion des erreurs globales
+- [ ] **12.2** Loading states (spinners, skeletons)
+- [ ] **12.3** Notifications (toast)
+- [ ] **12.4** Mode sombre
+- [ ] **12.5** Tests et débogage
+- [ ] **12.6** Build de production
+
+---
+
+## 🗓️ Ordre recommandé (par priorité)
+
+### **Semaine 1 : Fondations**
+```
+Phase 1 → Phase 2 → Phase 3
+```
+Objectif : Avoir un squelette fonctionnel avec authentification.
+
+### **Semaine 2 : Fonctionnalités principales**
+```
+Phase 4 → Phase 5 → Phase 6
+```
+Objectif : Dashboard, Bible, Cantiques.
+
+### **Semaine 3 : Fonctionnalités avancées**
+```
+Phase 7 → Phase 8 → Phase 9
+```
+Objectif : Services, Annonces, Gestion d'église.
+
+### **Semaine 4 : Fonctionnalités bonus**
+```
+Phase 10 → Phase 11 → Phase 12
+```
+Objectif : Bruit, Temps réel, Optimisations.
+
+---
+
+## 📂 Détail de ce que contient chaque fichier
+
+### **1. Configuration (config/)**
+
+| Fichier | Contenu |
+|---------|---------|
+| `vite.config.js` | Configuration Vite (port, proxy, plugins) |
+| `tailwind.config.js` | Thème Tailwind (couleurs, fonts, extensions) |
+| `postcss.config.js` | Configuration PostCSS |
+| `.env` | Variables d'environnement (API_URL, etc.) |
+
+### **2. API (api/)**
+
+| Fichier | Contenu |
+|---------|---------|
+| `axios.config.js` | Configuration Axios (baseURL, interceptors) |
+| `auth.api.js` | Fonctions d'appel (login, verify, chooseChurch) |
+| `church.api.js` | Fonctions d'appel (getChurch, updateChurch, members) |
+| `hymns.api.js` | Fonctions d'appel (getHymns, favorites, playlists) |
+| `bible.api.js` | Fonctions d'appel (getBooks, getVerse, search) |
+| `noise.api.js` | Fonctions d'appel (submitReading, getStats, alerts) |
+
+### **3. Contextes (context/)**
+
+| Fichier | Contenu |
+|---------|---------|
+| `AuthContext.jsx` | Gestion de l'authentification (user, token, login, logout) |
+| `ChurchContext.jsx` | Gestion de l'église (membres, settings) |
+| `SocketContext.jsx` | Gestion Socket.IO (connexion, events) |
+
+### **4. Hooks (hooks/)**
+
+| Fichier | Contenu |
+|---------|---------|
+| `useAuth.js` | Utiliser AuthContext facilement |
+| `useSocket.js` | Utiliser SocketContext facilement |
+| `useNoise.js` | Gestion du bruit (lectures, alertes) |
+| `useHymns.js` | Gestion des cantiques (favoris, playlists) |
+
+### **5. Pages (pages/)**
+
+| Fichier | Contenu |
+|---------|---------|
+| `HomePage.jsx` | Page d'accueil publique |
+| `DashboardPage.jsx` | Tableau de bord après connexion |
+| `BiblePage.jsx` | Lecture et recherche de la Bible |
+| `HymnsPage.jsx` | Gestion des cantiques |
+| `ServicesPage.jsx` | Gestion des cultes |
+| `AnnouncementsPage.jsx` | Gestion des annonces |
+| `ChurchPage.jsx` | Gestion de l'église |
+| `NoisePage.jsx` | Moniteur de bruit |
+| `SettingsPage.jsx` | Paramètres utilisateur |
+
+### **6. Composants (components/)**
+
+#### **Common**
+- `Layout.jsx` : Structure principale (sidebar + content)
+- `Header.jsx` : Barre de navigation supérieure
+- `Footer.jsx` : Pied de page
+- `Sidebar.jsx` : Menu latéral
+- `Loading.jsx` : Spinner de chargement
+
+#### **Auth**
+- `LoginPage.jsx` : Connexion par téléphone
+- `OTPVerification.jsx` : Validation du code OTP
+- `ChooseChurch.jsx` : Sélection de l'église
+
+#### **Dashboard**
+- `Dashboard.jsx` : Vue principale
+- `StatsCards.jsx` : Statistiques
+- `RecentActivity.jsx` : Activités récentes
+
+#### **Bible**
+- `BibleReader.jsx` : Lecture des versets
+- `BibleSearch.jsx` : Recherche avancée
+- `VerseOfTheDay.jsx` : Verset du jour
+
+#### **Hymns**
+- `HymnList.jsx` : Liste des cantiques
+- `HymnViewer.jsx` : Visualisation des paroles
+- `HymnSearch.jsx` : Recherche de cantiques
+- `HymnFavorites.jsx` : Favoris
+- `HymnPlaylist.jsx` : Playlists
+
+#### **Services**
+- `ServiceList.jsx` : Liste des cultes
+- `ServiceOrder.jsx` : Ordre du culte
+- `ServiceBuilder.jsx` : Construction du culte (drag & drop)
+
+#### **Noise**
+- `NoiseMonitor.jsx` : Moniteur en temps réel
+- `NoiseChart.jsx` : Graphique d'historique
+- `NoiseAlerts.jsx` : Alertes
+- `NoiseSettings.jsx` : Paramètres
+
+### **7. Utilitaires (utils/)**
+
+| Fichier | Contenu |
+|---------|---------|
+| `constants.js` | Constantes globales (rôles, statuts) |
+| `formatters.js` | Formateurs (date, nombre, etc.) |
+| `helpers.js` | Fonctions utilitaires |
+
+---
+
+## 🚀 Prochaine étape
+
+**Tu veux que je commence par :**
+
+1. **Les fichiers de configuration** (package.json, vite.config.js, tailwind.config.js) ?
+2. **La phase d'authentification** (Login, OTP, ChooseChurch) ?
+3. **Le layout principal** (Layout, Sidebar, Header) ?
+4. **Tout d'un coup** (je te donne le projet complet en une fois) ?
+
+Dis-moi ce que tu préfères, et je te donne le code correspondant ! 🎯

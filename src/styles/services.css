@@ -1,0 +1,735 @@
+/* ============================================
+   SERVICES PAGE STYLES
+   ============================================ */
+
+.services-page {
+  padding: 24px;
+}
+
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+}
+
+.page-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: #1f2937;
+  margin: 0;
+}
+
+.services-count {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.services-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.service-card {
+  background: white;
+  border-radius: 12px;
+  padding: 20px;
+  border: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.service-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  transform: translateY(-2px);
+}
+
+.service-card.published {
+  border-left: 4px solid #22c55e;
+}
+
+.service-card.draft {
+  border-left: 4px solid #f59e0b;
+}
+
+.service-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 2px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.status-badge.published {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.status-badge.draft {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.service-card-body h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0 0 8px 0;
+}
+
+.service-meta {
+  display: flex;
+  gap: 16px;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.meta-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.service-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 12px;
+  border-top: 1px solid #e5e7eb;
+  margin-top: 12px;
+}
+
+/* ============================================
+   SERVICE ORDER STYLES
+   ============================================ */
+
+.service-order {
+  background: white;
+  border-radius: 12px;
+  padding: 24px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+}
+
+.order-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.back-btn {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  padding: 8px 16px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #6b7280;
+  border-radius: 6px;
+  transition: all 0.2s;
+}
+
+.back-btn:hover {
+  background: #f3f4f6;
+}
+
+.order-title h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.order-date {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+.order-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.order-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #f9fafb;
+  border-radius: 8px;
+  transition: all 0.2s;
+  flex-wrap: wrap;
+}
+
+.order-item.restricted {
+  background: #fef3c7;
+  border: 1px solid #f59e0b;
+}
+
+.order-number {
+  min-width: 30px;
+  font-weight: 600;
+  color: #8B4513;
+}
+
+.order-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.order-type {
+  font-weight: 500;
+  color: #1f2937;
+}
+
+.order-duration {
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.order-visibility {
+  font-size: 13px;
+  color: #9ca3af;
+}
+
+.order-actions {
+  display: flex;
+  gap: 2px;
+  margin-left: auto;
+}
+
+.order-actions .action-btn {
+  padding: 4px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 4px;
+  transition: all 0.2s;
+}
+
+.order-actions .action-btn .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.order-actions .action-btn:hover {
+  background: #e5e7eb;
+}
+
+.order-actions .action-btn.edit:hover {
+  color: #8B4513;
+}
+
+.order-actions .action-btn.delete:hover {
+  color: #dc2626;
+}
+
+.order-published-badge {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 12px;
+  background: #dcfce7;
+  border-radius: 8px;
+  color: #16a34a;
+  font-weight: 500;
+}
+
+/* ============================================
+   ORDER FORM STYLES
+   ============================================ */
+
+.order-form,
+.order-edit-form {
+  padding: 16px;
+  background: #f9fafb;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-label {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+  margin-bottom: 6px;
+}
+
+.form-label .required {
+  color: #dc2626;
+}
+
+.form-label .optional {
+  color: #9ca3af;
+  font-weight: 400;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: inherit;
+  transition: border-color 0.2s;
+  outline: none;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+  border-color: #8B4513;
+  box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1);
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.cancel-btn {
+  padding: 10px 20px;
+  border: none;
+  background: #f3f4f6;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #6b7280;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cancel-btn:hover {
+  background: #e5e7eb;
+}
+
+.save-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: #8B4513;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.save-btn:hover:not(:disabled) {
+  background: #6f3710;
+}
+
+.save-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ============================================
+   HYMNS LYRICS DISPLAY
+   ============================================ */
+
+.order-hymns {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.hymn-item-wrapper {
+  border-left: 2px solid #e5e7eb;
+  padding-left: 8px;
+  margin-left: 4px;
+}
+
+.hymn-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  padding: 2px 4px;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.hymn-item-header:hover {
+  background: #f3f4f6;
+}
+
+.hymn-item {
+  font-size: 14px;
+  color: #1f2937;
+}
+
+.hymn-expand-btn {
+  padding: 2px 4px;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #6b7280;
+  transition: transform 0.3s;
+}
+
+.hymn-expand-btn .icon {
+  width: 16px;
+  height: 16px;
+}
+
+.hymn-expand-btn .icon.rotated {
+  transform: rotate(90deg);
+}
+
+.hymn-lyrics-container {
+  margin-top: 8px;
+  padding: 12px 16px;
+  background: #f9fafb;
+  border-radius: 8px;
+  border: 1px solid #e5e7eb;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.hymn-lyrics {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #1f2937;
+  white-space: pre-wrap;
+  font-family: 'Georgia', serif;
+}
+
+.hymn-chorus {
+  margin-top: 12px;
+  padding-top: 12px;
+  border-top: 1px dashed #d1d5db;
+  font-size: 14px;
+  line-height: 1.8;
+  color: #1f2937;
+  font-style: italic;
+}
+
+/* Versets */
+.order-verses {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+}
+
+.verse-item-wrapper {
+  padding: 4px 8px;
+  border-left: 2px solid #e5e7eb;
+  padding-left: 8px;
+}
+
+.verse-item {
+  font-size: 14px;
+  color: #1f2937;
+}
+
+.verse-text-preview {
+  font-size: 13px;
+  color: #4b5563;
+  font-style: italic;
+  margin-top: 2px;
+  padding-left: 12px;
+  border-left: 2px solid #d1d5db;
+  font-family: 'Georgia', serif;
+}
+
+/* ============================================
+   HYMN SELECTOR STYLES
+   ============================================ */
+
+.hymn-selector-group {
+  margin-bottom: 20px;
+}
+
+.hymn-selector {
+  position: relative;
+}
+
+.hymn-selector-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 10px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  background: white;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+  color: #1f2937;
+}
+
+.hymn-selector-toggle:hover {
+  border-color: #8B4513;
+}
+
+.hymn-selector-toggle .icon {
+  width: 18px;
+  height: 18px;
+  color: #6b7280;
+}
+
+.hymn-selected-count {
+  color: #8B4513;
+  font-weight: 500;
+}
+
+.hymn-select-placeholder {
+  color: #9ca3af;
+}
+
+.selected-hymns {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.selected-hymn-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 10px;
+  background: #f5f0eb;
+  border: 1px solid #d0bba5;
+  border-radius: 12px;
+  font-size: 13px;
+  color: #1f2937;
+}
+
+.selected-hymn-tag .remove-hymn {
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: #6b7280;
+  display: flex;
+  align-items: center;
+}
+
+.selected-hymn-tag .remove-hymn:hover {
+  color: #dc2626;
+}
+
+.selected-hymn-tag .remove-hymn .icon {
+  width: 14px;
+  height: 14px;
+}
+
+.hymn-selector-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  right: 0;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+  z-index: 50;
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
+}
+
+.hymn-selector-header {
+  padding: 12px;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.hymn-selector-search {
+  flex: 1;
+  position: relative;
+  min-width: 150px;
+}
+
+.hymn-selector-search .search-icon {
+  position: absolute;
+  left: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  color: #9ca3af;
+}
+
+.hymn-selector-search .search-input {
+  width: 100%;
+  padding: 8px 12px 8px 34px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 13px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.hymn-selector-search .search-input:focus {
+  border-color: #8B4513;
+}
+
+.book-select {
+  padding: 8px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+  font-size: 13px;
+  background: white;
+  cursor: pointer;
+  outline: none;
+}
+
+.book-select:focus {
+  border-color: #8B4513;
+}
+
+.hymn-list {
+  flex: 1;
+  overflow-y: auto;
+  max-height: 250px;
+  padding: 4px;
+}
+
+.hymn-item-select {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.hymn-item-select:hover {
+  background: #f3f4f6;
+}
+
+.hymn-item-select.selected {
+  background: #f5f0eb;
+}
+
+.hymn-item-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.hymn-item-number {
+  font-weight: 600;
+  color: #8B4513;
+  font-size: 13px;
+  min-width: 30px;
+}
+
+.hymn-item-title {
+  font-size: 13px;
+  color: #1f2937;
+}
+
+.hymn-item-book {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.check-icon {
+  width: 18px;
+  height: 18px;
+  color: #8B4513;
+}
+
+.hymn-selector-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  border-top: 1px solid #e5e7eb;
+}
+
+.hymn-count {
+  font-size: 12px;
+  color: #6b7280;
+}
+
+.close-selector {
+  padding: 4px 12px;
+  border: 1px solid #e5e7eb;
+  border-radius: 4px;
+  background: white;
+  cursor: pointer;
+  font-size: 13px;
+  color: #6b7280;
+  transition: all 0.2s;
+}
+
+.close-selector:hover {
+  background: #f3f4f6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+  
+  .hymn-selector-header {
+    flex-direction: column;
+  }
+  
+  .book-select {
+    width: 100%;
+  }
+  
+  .hymn-lyrics-container {
+    max-height: 200px;
+  }
+  
+  .order-item {
+    flex-direction: column;
+  }
+  
+  .order-actions {
+    margin-left: 0;
+    width: 100%;
+    justify-content: flex-end;
+  }
+}
