@@ -4,12 +4,41 @@ import { Phone, User, ArrowRight, Loader2 } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 import toast from 'react-hot-toast';
 
+// ✅ Liste des indicatifs pays
+const COUNTRY_CODES = [
+  { code: '+243', country: '🇨🇩 RDC' },
+  { code: '+225', country: '🇨🇮 Côte d\'Ivoire' },
+  { code: '+221', country: '🇸🇳 Sénégal' },
+  { code: '+237', country: '🇨🇲 Cameroun' },
+  { code: '+242', country: '🇨🇬 Congo' },
+  { code: '+241', country: '🇬🇦 Gabon' },
+  { code: '+236', country: '🇨🇫 Centrafrique' },
+  { code: '+235', country: '🇹🇩 Tchad' },
+  { code: '+234', country: '🇳🇬 Nigeria' },
+  { code: '+233', country: '🇬🇭 Ghana' },
+  { code: '+229', country: '🇧🇯 Bénin' },
+  { code: '+228', country: '🇹🇬 Togo' },
+  { code: '+227', country: '🇳🇪 Niger' },
+  { code: '+226', country: '🇧🇫 Burkina Faso' },
+  { code: '+223', country: '🇲🇱 Mali' },
+  { code: '+222', country: '🇲🇷 Mauritanie' },
+  { code: '+218', country: '🇱🇾 Libye' },
+  { code: '+216', country: '🇹🇳 Tunisie' },
+  { code: '+213', country: '🇩🇿 Algérie' },
+  { code: '+212', country: '🇲🇦 Maroc' },
+  { code: '+33', country: '🇫🇷 France' },
+  { code: '+32', country: '🇧🇪 Belgique' },
+  { code: '+41', country: '🇨🇭 Suisse' },
+  { code: '+44', country: '🇬🇧 Royaume-Uni' },
+];
+
 const RegisterPage = () => {
   const navigate = useNavigate();
   const { register, isLoading } = useAuth();
   
+  const [selectedCode, setSelectedCode] = useState('+243');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [formData, setFormData] = useState({
-    phone: '',
     name: '',
   });
   const [error, setError] = useState('');
@@ -24,10 +53,11 @@ const RegisterPage = () => {
     e.preventDefault();
     setError('');
 
+    const fullPhone = selectedCode + phoneNumber;
+
     // Validation du numéro de téléphone
-    const phoneRegex = /^\+\d{10,15}$/;
-    if (!phoneRegex.test(formData.phone)) {
-      setError('Format de téléphone invalide. Utilisez +243XXXXXXXXX');
+    if (!phoneNumber || phoneNumber.length < 7) {
+      setError('Veuillez entrer un numéro de téléphone valide');
       return;
     }
 
@@ -37,7 +67,7 @@ const RegisterPage = () => {
     }
 
     // ✅ Sauvegarder les données temporairement et passer à l'étape 2
-    sessionStorage.setItem('registerPhone', formData.phone);
+    sessionStorage.setItem('registerPhone', fullPhone);
     sessionStorage.setItem('registerName', formData.name.trim());
     
     navigate('/choose-church');
@@ -75,43 +105,59 @@ const RegisterPage = () => {
                 Nom complet
               </label>
               <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <User className="h-5 w-5 text-gray-400" />
-                </div>
                 <input
                   type="text"
                   name="name"
                   value={formData.name}
                   onChange={handleChange}
                   placeholder="Jean Dupont"
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition"
                   disabled={isLoading}
                   autoFocus
                 />
               </div>
             </div>
 
-            {/* Numéro de téléphone */}
+            {/* Numéro de téléphone avec indicatif */}
             <div className="mb-6">
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Numéro de téléphone
               </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Phone className="h-5 w-5 text-gray-400" />
+              <div className="flex gap-2">
+                {/* Sélecteur d'indicatif */}
+                <div className="relative w-32">
+                  <select
+                    value={selectedCode}
+                    onChange={(e) => setSelectedCode(e.target.value)}
+                    className="w-full pl-3 pr-8 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none appearance-none bg-white"
+                    disabled={isLoading}
+                  >
+                    {COUNTRY_CODES.map((country) => (
+                      <option key={country.code} value={country.code}>
+                        {country.code}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                    <svg className="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
                 </div>
+
+                {/* Numéro de téléphone */}
                 <input
                   type="tel"
                   name="phone"
-                  value={formData.phone}
-                  onChange={handleChange}
-                  placeholder="+243123456789"
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition"
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value.replace(/\D/g, ''))}
+                  placeholder="812345678"
+                  className="flex-1 pl-4 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition"
                   disabled={isLoading}
                 />
               </div>
               <p className="mt-1 text-xs text-gray-400">
-                Format: +243XXXXXXXXX (indicatif pays inclus)
+                {selectedCode}812345678 (exemple)
               </p>
             </div>
 
@@ -121,7 +167,7 @@ const RegisterPage = () => {
 
             <button
               type="submit"
-              disabled={isLoading || !formData.phone || !formData.name}
+              disabled={isLoading || !phoneNumber || !formData.name}
               className="w-full bg-primary-600 hover:bg-primary-700 disabled:bg-primary-300 text-white font-medium py-3 px-4 rounded-lg transition flex items-center justify-center gap-2"
             >
               {isLoading ? (

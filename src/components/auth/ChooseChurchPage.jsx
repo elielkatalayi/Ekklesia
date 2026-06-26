@@ -94,15 +94,14 @@ const ChooseChurchPage = () => {
             <p className="font-medium text-gray-800">{name} - {phone}</p>
           </div>
 
-          {/* Recherche */}
+          {/* Recherche - Sans icône */}
           <div className="relative mb-6">
-            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
             <input
               type="text"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
               placeholder="Rechercher une église par nom, code ou pasteur..."
-              className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
+              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none"
               autoFocus
             />
           </div>

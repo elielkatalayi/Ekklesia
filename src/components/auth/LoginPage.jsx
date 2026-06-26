@@ -4,11 +4,40 @@ import { Phone, ArrowRight, Loader2, Search, Building2 } from 'lucide-react';
 import { useAuth } from '../../hooks/useAuth';
 import toast from 'react-hot-toast';
 
+// ✅ Liste des indicatifs pays
+const COUNTRY_CODES = [
+  { code: '+243', country: '🇨🇩 RDC' },
+  { code: '+225', country: '🇨🇮 Côte d\'Ivoire' },
+  { code: '+221', country: '🇸🇳 Sénégal' },
+  { code: '+237', country: '🇨🇲 Cameroun' },
+  { code: '+242', country: '🇨🇬 Congo' },
+  { code: '+241', country: '🇬🇦 Gabon' },
+  { code: '+236', country: '🇨🇫 Centrafrique' },
+  { code: '+235', country: '🇹🇩 Tchad' },
+  { code: '+234', country: '🇳🇬 Nigeria' },
+  { code: '+233', country: '🇬🇭 Ghana' },
+  { code: '+229', country: '🇧🇯 Bénin' },
+  { code: '+228', country: '🇹🇬 Togo' },
+  { code: '+227', country: '🇳🇪 Niger' },
+  { code: '+226', country: '🇧🇫 Burkina Faso' },
+  { code: '+223', country: '🇲🇱 Mali' },
+  { code: '+222', country: '🇲🇷 Mauritanie' },
+  { code: '+218', country: '🇱🇾 Libye' },
+  { code: '+216', country: '🇹🇳 Tunisie' },
+  { code: '+213', country: '🇩🇿 Algérie' },
+  { code: '+212', country: '🇲🇦 Maroc' },
+  { code: '+33', country: '🇫🇷 France' },
+  { code: '+32', country: '🇧🇪 Belgique' },
+  { code: '+41', country: '🇨🇭 Suisse' },
+  { code: '+44', country: '🇬🇧 Royaume-Uni' },
+];
+
 const LoginPage = () => {
   const navigate = useNavigate();
   const { login, churches, isLoading } = useAuth();
   
-  const [phone, setPhone] = useState('');
+  const [selectedCode, setSelectedCode] = useState('+243');
+  const [phoneNumber, setPhoneNumber] = useState('');
   const [churchCode, setChurchCode] = useState('');
   const [showChurchSelector, setShowChurchSelector] = useState(false);
   const [searchTerm, setSearchTerm] = useState('');
@@ -18,14 +47,15 @@ const LoginPage = () => {
     e.preventDefault();
     setError('');
 
+    const fullPhone = selectedCode + phoneNumber;
+    
     // Validation du numéro de téléphone
-    const phoneRegex = /^\+\d{10,15}$/;
-    if (!phoneRegex.test(phone)) {
-      setError('Format invalide. Utilisez +243XXXXXXXXX');
+    if (!phoneNumber || phoneNumber.length < 7) {
+      setError('Veuillez entrer un numéro de téléphone valide');
       return;
     }
 
-    const result = await login(phone, churchCode || null);
+    const result = await login(fullPhone, churchCode || null);
     
     if (result.success) {
       navigate('/dashboard');
@@ -59,21 +89,40 @@ const LoginPage = () => {
           </p>
 
           <form onSubmit={handleSubmit}>
-            {/* Numéro de téléphone */}
+            {/* Numéro de téléphone avec indicatif */}
             <div className="mb-4">
               <label className="block text-sm font-medium text-gray-700 mb-2">
                 Numéro de téléphone
               </label>
-              <div className="relative">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Phone className="h-5 w-5 text-gray-400" />
+              <div className="flex gap-2">
+                {/* Sélecteur d'indicatif */}
+                <div className="relative w-32">
+                  <select
+                    value={selectedCode}
+                    onChange={(e) => setSelectedCode(e.target.value)}
+                    className="w-full pl-3 pr-8 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none appearance-none bg-white"
+                    disabled={isLoading}
+                  >
+                    {COUNTRY_CODES.map((country) => (
+                      <option key={country.code} value={country.code}>
+                        {country.code}
+                      </option>
+                    ))}
+                  </select>
+                  <div className="absolute inset-y-0 right-0 pr-3 flex items-center pointer-events-none">
+                    <svg className="h-4 w-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                    </svg>
+                  </div>
                 </div>
+
+                {/* Numéro de téléphone */}
                 <input
                   type="tel"
-                  value={phone}
-                  onChange={(e) => setPhone(e.target.value)}
-                  placeholder="+243123456789"
-                  className={`w-full pl-10 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition ${
+                  value={phoneNumber}
+                  onChange={(e) => setPhoneNumber(e.target.value.replace(/\D/g, ''))}
+                  placeholder="812345678"
+                  className={`flex-1 pl-4 pr-4 py-3 border rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition ${
                     error ? 'border-red-500 ring-1 ring-red-500' : 'border-gray-300'
                   }`}
                   disabled={isLoading}
@@ -81,41 +130,10 @@ const LoginPage = () => {
                 />
               </div>
               <p className="mt-1 text-xs text-gray-400">
-                Format: +243XXXXXXXXX (indicatif pays inclus)
+                {selectedCode}812345678 (exemple)
               </p>
             </div>
 
-            {/* Code église (optionnel) */}
-            <div className="mb-4">
-              <div className="flex items-center justify-between">
-                <label className="block text-sm font-medium text-gray-700">
-                  Code église <span className="text-gray-400">(optionnel)</span>
-                </label>
-                <button
-                  type="button"
-                  onClick={() => setShowChurchSelector(!showChurchSelector)}
-                  className="text-sm text-primary-600 hover:text-primary-700 font-medium"
-                >
-                  {showChurchSelector ? 'Masquer' : 'Choisir une église'}
-                </button>
-              </div>
-              <div className="relative mt-1">
-                <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                  <Building2 className="h-5 w-5 text-gray-400" />
-                </div>
-                <input
-                  type="text"
-                  value={churchCode}
-                  onChange={(e) => setChurchCode(e.target.value.toUpperCase())}
-                  placeholder="Ex: JOIE, GRACE"
-                  className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary-500 focus:border-primary-500 outline-none transition"
-                  disabled={isLoading}
-                />
-              </div>
-              <p className="mt-1 text-xs text-gray-400">
-                Laissez vide pour votre église par défaut
-              </p>
-            </div>
 
             {/* Sélecteur d'églises */}
             {showChurchSelector && (
@@ -158,7 +176,7 @@ const LoginPage = () => {
 
             <button
               type="submit"
-              disabled={isLoading || !phone}
+              disabled={isLoading || !phoneNumber}
               className="w-full bg-primary-600 hover:bg-primary-700 disabled:bg-primary-300 text-white font-medium py-3 px-4 rounded-lg transition flex items-center justify-center gap-2 mt-2"
             >
               {isLoading ? (

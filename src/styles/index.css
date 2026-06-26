@@ -1096,3 +1096,41 @@ body {
     padding: 12px;
   }
 }
+
+
+
+
+/* ✅ Réinitialisation forcée pour tous les inputs */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+input,
+select,
+textarea,
+button {
+  font-family: inherit;
+}
+
+/* ✅ Forcer la couleur du texte */
+input[type="text"],
+input[type="tel"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+select,
+textarea {
+  color: #1f2937 !important;
+  background: #ffffff !important;
+  border: 1px solid #d1d5db !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: #8B4513 !important;
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(139, 69, 19, 0.1) !important;
+}
