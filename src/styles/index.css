@@ -715,3 +715,393 @@ body {
 ::-webkit-scrollbar-thumb:hover {
   background: #6f3710;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============================================
+   HEADER COMPLET - AJOUTER À index.css
+   ============================================ */
+
+/* Styles de base du header */
+.header {
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.header-title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+.header-church-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: #f5f0eb;
+  color: #8B4513;
+  font-size: 12px;
+  font-weight: 500;
+  padding: 4px 12px;
+  border-radius: 9999px;
+  border: 1px solid #d0bba5;
+}
+
+.header-church-badge .icon {
+  width: 14px;
+  height: 14px;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* Sélecteur d'église */
+.header-church-selector {
+  position: relative;
+}
+
+.header-church-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  background: none;
+  border: none;
+  border-radius: 8px;
+  color: #4b5563;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.header-church-btn:hover {
+  background: #f3f4f6;
+  color: #1f2937;
+}
+
+.header-church-btn .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.header-church-btn .icon-chevron {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s;
+}
+
+.header-church-btn .icon-chevron.rotated {
+  transform: rotate(180deg);
+}
+
+/* Dropdown */
+.header-church-dropdown {
+  position: absolute;
+  right: 0;
+  margin-top: 8px;
+  width: 256px;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e5e7eb;
+  padding: 8px 0;
+  z-index: 50;
+  max-height: 240px;
+  overflow-y: auto;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.header-church-dropdown .dropdown-item {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: 10px 16px;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-size: 14px;
+  color: #374151;
+}
+
+.header-church-dropdown .dropdown-item:hover {
+  background: #f3f4f6;
+}
+
+.header-church-dropdown .dropdown-item.active {
+  background: #f5f0eb;
+}
+
+.header-church-dropdown .dropdown-item .church-name {
+  font-weight: 500;
+}
+
+.header-church-dropdown .dropdown-item .check-icon {
+  color: #8B4513;
+  font-size: 14px;
+}
+
+/* Profil utilisateur */
+.header-user {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-avatar {
+  width: 32px;
+  height: 32px;
+  background: #f5f0eb;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #8B4513;
+  flex-shrink: 0;
+}
+
+.header-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.header-user-info {
+  display: flex;
+  flex-direction: column;
+}
+
+.header-username {
+  font-size: 14px;
+  font-weight: 500;
+  color: #1f2937;
+  line-height: 1.2;
+}
+
+.header-user-role {
+  font-size: 11px;
+  color: #6b7280;
+  text-transform: capitalize;
+}
+
+/* Bouton déconnexion */
+.header-logout {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  color: #6b7280;
+  border: none;
+  background: none;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: all 0.2s;
+}
+
+.header-logout:hover {
+  background: #fef2f2;
+  color: #dc2626;
+}
+
+.header-logout .icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .header {
+    padding: 12px 16px;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  
+  .header-title {
+    font-size: 16px;
+  }
+  
+  .header-church-badge {
+    font-size: 10px;
+    padding: 2px 10px;
+  }
+  
+  .header-church-btn span:not(.icon) {
+    display: none;
+  }
+  
+  .header-church-btn {
+    padding: 6px 10px;
+  }
+  
+  .header-user-info {
+    display: none;
+  }
+  
+  .header-church-dropdown {
+    width: 200px;
+    right: -40px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header-church-badge {
+    display: none;
+  }
+  
+  .header-right {
+    gap: 8px;
+  }
+  
+  .header-avatar {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+
+
+
+/* ============================================
+   LAYOUT STYLES
+   ============================================ */
+
+.layout {
+  display: flex;
+  min-height: 100vh;
+  background-color: #f9fafb;
+}
+
+/* ============================================
+   CONTENU PRINCIPAL
+   ============================================ */
+.layout-main {
+  flex: 1;
+  margin-left: 256px;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* ============================================
+   BANDEAU D'ÉGLISE VISUALISÉE
+   ============================================ */
+.layout-church-banner {
+  background-color: #f5f0eb;
+  border-bottom: 1px solid #d0bba5;
+  padding: 6px 24px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: #4b5563;
+  flex-wrap: wrap;
+}
+
+.layout-church-banner .label {
+  font-weight: 500;
+  color: #6b7280;
+}
+
+.layout-church-banner .church-name {
+  font-weight: 600;
+  color: #8B4513;
+}
+
+.layout-church-banner .church-code {
+  color: #9ca3af;
+  font-size: 12px;
+}
+
+.layout-church-banner .icon {
+  font-size: 16px;
+}
+
+/* ============================================
+   CONTENU DES PAGES
+   ============================================ */
+.layout-content {
+  flex: 1;
+  padding: 24px;
+  background-color: #f9fafb;
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+@media (max-width: 768px) {
+  .layout-main {
+    margin-left: 64px;
+  }
+  
+  .layout-church-banner {
+    padding: 4px 16px;
+    font-size: 12px;
+    gap: 4px;
+  }
+  
+  .layout-content {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .layout-main {
+    margin-left: 0;
+    padding-top: 64px;
+  }
+  
+  .layout-church-banner {
+    font-size: 11px;
+    padding: 4px 12px;
+  }
+  
+  .layout-content {
+    padding: 12px;
+  }
+}

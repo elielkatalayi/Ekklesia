@@ -1,67 +1,53 @@
 import apiService from './axios.config';
 
 /**
- * Service d'authentification
- * Tous les appels API liés à l'authentification
+ * Service d'authentification - Version sans OTP
  */
 const authApi = {
   /**
-   * Envoyer un OTP
-   * @param {string} phoneNumber - Numéro de téléphone (format E.164)
-   * @param {string} channel - 'sms' ou 'whatsapp'
-   */
-  sendOtp: (phoneNumber, channel = 'sms') => {
-    return apiService.post('/auth/send-otp', { phoneNumber, channel });
-  },
-
-  /**
-   * Vérifier l'OTP
-   * @param {string} otpId - ID de l'OTP
-   * @param {string} code - Code à 6 chiffres
-   */
-  verifyOtp: (otpId, code) => {
-    return apiService.post('/auth/verify-otp', { otpId, code });
-  },
-
-  /**
-   * Renvoyer l'OTP
-   * @param {string} phoneNumber - Numéro de téléphone
-   * @param {string} channel - 'sms' ou 'whatsapp'
-   */
-  resendOtp: (phoneNumber, channel = 'sms') => {
-    return apiService.post('/auth/resend-otp', { phoneNumber, channel });
-  },
-
-  /**
-   * Choisir une église (création du compte)
-   * @param {string} phone - Numéro de téléphone
-   * @param {string} churchId - ID de l'église
-   * @param {string} name - Nom de l'utilisateur
-   */
-  chooseChurch: (phone, churchId, name) => {
-    return apiService.post('/auth/choose-church', { phone, churchId, name });
-  },
-
-  /**
-   * Récupérer la liste des églises
+   * Récupérer toutes les églises disponibles
    */
   getChurches: () => {
     return apiService.get('/auth/churches');
   },
 
   /**
-   * Vérifier si un utilisateur existe
-   * @param {string} phone - Numéro de téléphone
+   * Récupérer les détails d'une église par code
+   * @param {string} churchCode - Code de l'église
    */
-  checkUser: (phone) => {
-    return apiService.post('/auth/check-user', { phone });
+  getChurchByCode: (churchCode) => {
+    return apiService.get(`/auth/church/${churchCode}`);
   },
 
   /**
-   * Rafraîchir le token
+   * Inscription d'un nouvel utilisateur
+   * @param {Object} data - { phone, name, churchId }
    */
-  refreshToken: () => {
-    return apiService.post('/auth/refresh-token');
+  register: (data) => {
+    return apiService.post('/auth/register', data);
+  },
+
+  /**
+   * Connexion par numéro de téléphone
+   * @param {Object} data - { phone, churchCode? }
+   */
+  login: (data) => {
+    return apiService.post('/auth/login', data);
+  },
+
+  /**
+   * Changer d'église visualisée
+   * @param {Object} data - { churchCode }
+   */
+  switchChurch: (data) => {
+    return apiService.post('/auth/switch-church', data);
+  },
+
+  /**
+   * Récupérer le profil utilisateur
+   */
+  getMe: () => {
+    return apiService.get('/auth/me');
   },
 
   /**
@@ -69,14 +55,6 @@ const authApi = {
    */
   logout: () => {
     return apiService.post('/auth/logout');
-  },
-
-  /**
-   * Compléter le profil
-   * @param {Object} data - { name, email, photoUrl }
-   */
-  completeProfile: (data) => {
-    return apiService.put('/auth/complete-profile', data);
   },
 };
 

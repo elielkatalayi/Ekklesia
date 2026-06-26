@@ -9,10 +9,13 @@ export const AuthProvider = ({ children }) => {
   const [token, setToken] = useState(null);
   const [isAuthenticated, setIsAuthenticated] = useState(false);
   const [isLoading, setIsLoading] = useState(true);
-  const [otpData, setOtpData] = useState(null);
+  const [churches, setChurches] = useState([]);
+  const [selectedChurch, setSelectedChurch] = useState(null);
+  const [viewingChurch, setViewingChurch] = useState(null);
 
+  // Charger les données au démarrage
   useEffect(() => {
-    const loadAuthData = () => {
+    const loadAuthData = async () => {
       try {
         const storedToken = localStorage.getItem('accessToken');
         const storedUser = localStorage.getItem('user');
@@ -21,13 +24,23 @@ export const AuthProvider = ({ children }) => {
           setToken(storedToken);
           setUser(JSON.parse(storedUser));
           setIsAuthenticated(true);
-          console.log('✅ Utilisateur authentifié');
+          await loadChurches();
+          
+          try {
+            const meResponse = await authApi.getMe();
+            if (meResponse.data.success) {
+              const { user, viewingChurch } = meResponse.data.data;
+              setUser(user);
+              setViewingChurch(viewingChurch);
+            }
+          } catch (error) {
+            console.log('⚠️ Erreur chargement profil:', error.message);
+          }
         } else {
-          console.log('❌ Non authentifié');
-          setIsAuthenticated(false);
+          await loadChurches();
         }
       } catch (error) {
-        console.error('❌ Erreur:', error);
+        console.error('❌ Erreur auth:', error);
         localStorage.removeItem('accessToken');
         localStorage.removeItem('user');
         setIsAuthenticated(false);
@@ -39,32 +52,35 @@ export const AuthProvider = ({ children }) => {
     loadAuthData();
   }, []);
 
-  // Envoyer l'OTP
-  const sendOtp = async (phoneNumber, channel = 'sms') => {
+  const loadChurches = async () => {
+    try {
+      const response = await authApi.getChurches();
+      if (response.data.success) {
+        setChurches(response.data.data.churches || []);
+      }
+    } catch (error) {
+      console.error('❌ Erreur chargement églises:', error);
+    }
+  };
+
+  const register = async (phone, name, churchId) => {
     setIsLoading(true);
     try {
-      console.log('📱 Envoi OTP pour:', phoneNumber);
-      const response = await authApi.sendOtp(phoneNumber, channel);
-      
+      const response = await authApi.register({ phone, name, churchId });
       if (response.data.success) {
         const data = response.data.data;
-        console.log('✅ OTP envoyé:', data);
-        
-        setOtpData({
-          otpId: data.otpId,
-          phone: data.phone,
-          userExists: data.userExists,
-          needsProfileCompletion: data.needsProfileCompletion,
-        });
-        
-        toast.success('Code envoyé avec succès');
+        localStorage.setItem('accessToken', data.accessToken);
+        localStorage.setItem('user', JSON.stringify(data.user));
+        setToken(data.accessToken);
+        setUser(data.user);
+        setViewingChurch(data.church);
+        setIsAuthenticated(true);
+        toast.success('Inscription réussie !');
         return { success: true, data };
       }
-      
-      throw new Error('Erreur lors de l\'envoi');
+      throw new Error('Erreur lors de l\'inscription');
     } catch (error) {
       const message = error.response?.data?.message || error.message;
-      console.error('❌ Erreur sendOtp:', message);
       toast.error(message);
       return { success: false, error: message };
     } finally {
@@ -72,45 +88,26 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Vérifier l'OTP
-  const verifyOtp = async (code) => {
-    if (!otpData?.otpId) {
-      toast.error('Aucune session OTP');
-      return { success: false, error: 'Aucune session OTP' };
-    }
-
+  const login = async (phone, churchCode = null) => {
     setIsLoading(true);
     try {
-      console.log('🔍 Vérification OTP pour:', otpData.otpId);
-      const response = await authApi.verifyOtp(otpData.otpId, code);
-      
+      const payload = { phone };
+      if (churchCode) payload.churchCode = churchCode;
+      const response = await authApi.login(payload);
       if (response.data.success) {
         const data = response.data.data;
-        console.log('✅ OTP vérifié:', data);
-        
-        if (data.accessToken && data.user) {
-          localStorage.setItem('accessToken', data.accessToken);
-          localStorage.setItem('user', JSON.stringify(data.user));
-          setToken(data.accessToken);
-          setUser(data.user);
-          setIsAuthenticated(true);
-          toast.success('Connexion réussie !');
-          return { success: true, data, isComplete: true };
-        }
-        
-        if (data.needsChurchSelection) {
-          // ✅ Remplacer toast.info() par toast.success()
-          toast.success('Veuillez choisir votre église');
-          return { success: true, data, needsChurchSelection: true };
-        }
-        
+        localStorage.setItem('accessToken', data.accessToken);
+        localStorage.setItem('user', JSON.stringify(data.user));
+        setToken(data.accessToken);
+        setUser(data.user);
+        setViewingChurch(data.viewingChurch);
+        setIsAuthenticated(true);
+        toast.success('Connexion réussie !');
         return { success: true, data };
       }
-      
-      throw new Error('Code invalide');
+      throw new Error('Erreur lors de la connexion');
     } catch (error) {
       const message = error.response?.data?.message || error.message;
-      console.error('❌ Erreur verifyOtp:', message);
       toast.error(message);
       return { success: false, error: message };
     } finally {
@@ -118,31 +115,19 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Choisir une église
-  const chooseChurch = async (churchId, name) => {
-    if (!otpData?.phone) {
-      toast.error('Aucune session');
-      return { success: false };
-    }
-
+  const switchChurch = async (churchCode) => {
     setIsLoading(true);
     try {
-      const response = await authApi.chooseChurch(otpData.phone, churchId, name);
-      
+      const response = await authApi.switchChurch({ churchCode });
       if (response.data.success) {
         const data = response.data.data;
-        if (data.accessToken && data.user) {
-          localStorage.setItem('accessToken', data.accessToken);
-          localStorage.setItem('user', JSON.stringify(data.user));
-          setToken(data.accessToken);
-          setUser(data.user);
-          setIsAuthenticated(true);
-          toast.success('Bienvenue dans votre église !');
-          return { success: true, data, isComplete: true };
-        }
+        localStorage.setItem('accessToken', data.accessToken);
+        setToken(data.accessToken);
+        setViewingChurch(data.church);
+        toast.success(`Église changée : ${data.church.name}`);
+        return { success: true, data };
       }
-      
-      throw new Error('Erreur lors du choix');
+      throw new Error('Erreur lors du changement d\'église');
     } catch (error) {
       const message = error.response?.data?.message || error.message;
       toast.error(message);
@@ -152,19 +137,27 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  // Déconnexion
+  // ✅ Version corrigée du logout
   const logout = async () => {
     try {
-      await authApi.logout();
+      const token = localStorage.getItem('accessToken');
+      if (token) {
+        try {
+          await authApi.logout();
+        } catch (error) {
+          console.log('⚠️ Erreur lors de la déconnexion serveur:', error.message);
+        }
+      }
     } catch (error) {
       console.error('Erreur déconnexion:', error);
     } finally {
       localStorage.removeItem('accessToken');
+      localStorage.removeItem('refreshToken');
       localStorage.removeItem('user');
       setToken(null);
       setUser(null);
       setIsAuthenticated(false);
-      setOtpData(null);
+      setViewingChurch(null);
       toast.success('Déconnecté');
     }
   };
@@ -174,12 +167,15 @@ export const AuthProvider = ({ children }) => {
     token,
     isLoading,
     isAuthenticated,
-    otpData,
-    sendOtp,
-    verifyOtp,
-    chooseChurch,
+    churches,
+    selectedChurch,
+    setSelectedChurch,
+    viewingChurch,
+    register,
+    login,
+    switchChurch,
     logout,
-    setOtpData,
+    loadChurches,
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;

@@ -1,49 +1,63 @@
+// api/serviceOrder.api.js
+
 import apiService from './axios.config';
 
-/**
- * Service API pour l'ordre des services
- */
 const serviceOrderApi = {
-  /**
-   * Récupérer tous les ordres d'un service
-   * @param {string} serviceId - ID du service
-   */
   getOrdersByService: (serviceId) => {
+    console.log('📤 [API] getOrdersByService - serviceId:', serviceId);
     return apiService.get(`/service-order/service/${serviceId}`);
   },
 
-  /**
-   * Créer un ordre
-   * @param {Object} data - { serviceId, order, itemType, reference, customText, durationMinutes, visibility }
-   */
-  createOrder: (data) => {
-    return apiService.post('/service-order', data);
-  },
+// api/serviceOrder.api.js
 
-  /**
-   * Mettre à jour un ordre
-   * @param {string} id - ID de l'ordre
-   * @param {Object} data - { order, reference, customText, durationMinutes, visibility }
-   */
+createOrder: (data) => {
+  console.log('📤 [API] createOrder - Données envoyées:', JSON.stringify(data, null, 2));
+  
+  return apiService.post('/service-order', data)
+    .then(response => {
+      console.log('✅ [API] Réponse succès:', response.data);
+      return response;
+    })
+    .catch(error => {
+      console.error('❌ [API] ===== ERREUR BACKEND =====');
+      console.error('❌ Status:', error.response?.status);
+      console.error('❌ Message:', error.response?.data?.message);
+      console.error('❌ Error code:', error.response?.data?.error?.code);
+      
+      // ✅ AFFICHER LES DÉTAILS COMPLETS
+      const details = error.response?.data?.error?.details;
+      console.error('❌ Détails (complets):', JSON.stringify(details, null, 2));
+      
+      if (Array.isArray(details)) {
+        details.forEach((detail, index) => {
+          console.error(`❌ Détail ${index + 1}:`, {
+            field: detail.field,
+            message: detail.message
+          });
+        });
+      }
+      
+      console.error('❌ Données complètes:', JSON.stringify(error.response?.data, null, 2));
+      console.error('❌ ===============================');
+      throw error;
+    });
+},
+
   updateOrder: (id, data) => {
+    console.log('📤 [API] updateOrder - ID:', id);
+    console.log('📤 [API] updateOrder - Données:', JSON.stringify(data, null, 2));
     return apiService.put(`/service-order/${id}`, data);
   },
 
-  /**
-   * Réorganiser les ordres (drag & drop)
-   * @param {Object} data - { serviceId, orders: [{ id, order }] }
-   */
   reorderOrders: (data) => {
+    console.log('📤 [API] reorderOrders - Données:', JSON.stringify(data, null, 2));
     return apiService.put('/service-order/reorder', data);
   },
 
-  /**
-   * Supprimer un ordre
-   * @param {string} id - ID de l'ordre
-   */
   deleteOrder: (id) => {
+    console.log('📤 [API] deleteOrder - ID:', id);
     return apiService.delete(`/service-order/${id}`);
   },
 };
 
-export default serviceOrderApi;
+export default serviceOrderApi; 

@@ -733,3 +733,521 @@
     justify-content: flex-end;
   }
 }
+
+
+
+
+
+
+/* styles/services.css */
+
+/* Groupe des versets */
+.verse-selector-group {
+  margin-bottom: 16px;
+}
+
+.verse-input-group {
+  display: flex;
+  gap: 8px;
+}
+
+.verse-input-group .form-input {
+  flex: 1;
+}
+
+.add-verse-btn {
+  padding: 8px 16px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.add-verse-btn:hover {
+  background: #2563eb;
+}
+
+.selected-verses-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.selected-verse-tag {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #f0fdf4;
+  color: #166534;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 13px;
+  border: 1px solid #bbf7d0;
+}
+
+.selected-verse-tag .remove-verse {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  color: #166534;
+}
+
+.selected-verse-tag .remove-verse .icon {
+  width: 14px;
+  height: 14px;
+}
+
+.selected-verse-tag .remove-verse:hover {
+  color: #dc2626;
+}
+
+
+
+/* styles/services.css */
+
+/* ✅ Conteneur principal du sélecteur de cantiques */
+.hymn-selector-group {
+  position: relative;
+  margin-bottom: 16px;
+  z-index: 100; /* Assure que le dropdown reste au-dessus */
+}
+
+/* ✅ Bouton pour ouvrir le sélecteur */
+.hymn-selector-toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  padding: 10px 14px;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.hymn-selector-toggle:hover {
+  background: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.hymn-selector-toggle .icon {
+  width: 18px;
+  height: 18px;
+}
+
+/* ✅ Dropdown du sélecteur - CORRIGÉ */
+.hymn-selector-dropdown {
+  position: absolute; /* ⚠️ Position absolue pour ne pas pousser le contenu */
+  top: 100%; /* Juste en dessous du bouton */
+  left: 0;
+  right: 0;
+  margin-top: 8px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: white;
+  padding: 12px;
+  max-height: 350px; /* ⚠️ Hauteur maximale */
+  overflow-y: auto; /* ⚠️ Scroll si trop long */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15); /* Ombre pour le relief */
+  z-index: 1000; /* ⚠️ Très haut pour passer au-dessus de tout */
+}
+
+/* ✅ Liste des cantiques */
+.hymn-list {
+  max-height: 200px; /* ⚠️ Hauteur maximale avec scroll */
+  overflow-y: auto;
+  border: 1px solid #f1f5f9;
+  border-radius: 6px;
+}
+
+/* ✅ Conteneur du formulaire - pour éviter les débordements */
+.order-form {
+  position: relative;
+  overflow: visible !important; /* ⚠️ Permettre le débordement du dropdown */
+}
+
+/* ✅ Conteneur parent - s'assurer que le dropdown peut déborder */
+.service-order {
+  position: relative;
+  overflow: visible !important;
+}
+
+/* ✅ S'assurer que le conteneur du formulaire ne coupe pas le dropdown */
+.order-list {
+  position: relative;
+  overflow: visible !important;
+}
+
+/* ✅ Pour le conteneur principal */
+.order-item {
+  position: relative;
+  overflow: visible !important;
+}
+
+/* ✅ Ajustement pour le formulaire dans le modal */
+.order-form-container {
+  position: relative;
+  overflow: visible !important;
+  z-index: 50;
+}
+
+/* ✅ Cantiques sélectionnés */
+.selected-hymns-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.selected-hymn-tag {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #e0f2fe;
+  color: #0369a1;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 13px;
+}
+
+.selected-hymn-tag .remove-hymn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  color: #0369a1;
+}
+
+.selected-hymn-tag .remove-hymn .icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* ✅ Ajustement pour le modal */
+.hymn-selector-dropdown {
+  max-width: 100%; /* ⚠️ Ne pas dépasser la largeur du parent */
+}
+
+/* ✅ Pour les écrans plus petits */
+@media (max-width: 768px) {
+  .hymn-selector-dropdown {
+    max-height: 250px;
+    left: 0;
+    right: 0;
+  }
+  
+  .hymn-list {
+    max-height: 150px;
+  }
+}
+
+
+
+/* styles/services.css */
+
+/* ✅ Chapter Selector */
+.chapter-selector {
+  margin: 8px 0 12px 0;
+  padding: 12px 16px;
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 8px;
+}
+
+.chapter-selector-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.chapter-book-select {
+  flex: 2;
+  min-width: 150px;
+}
+
+.chapter-number-input {
+  flex: 1;
+  min-width: 80px;
+}
+
+.add-chapter-btn {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  background: #22c55e;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap;
+  transition: background 0.2s;
+}
+
+.add-chapter-btn:hover:not(:disabled) {
+  background: #16a34a;
+}
+
+.add-chapter-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.add-chapter-btn .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.verse-divider {
+  text-align: center;
+  color: #94a3b8;
+  font-size: 12px;
+  padding: 8px 0;
+  position: relative;
+}
+
+.verse-divider::before,
+.verse-divider::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 40%;
+  height: 1px;
+  background: #e2e8f0;
+}
+
+.verse-divider::before {
+  left: 0;
+}
+
+.verse-divider::after {
+  right: 0;
+}
+
+.verse-input-group {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.verse-book-select {
+  flex: 2;
+  min-width: 120px;
+}
+
+.verse-chapter-input {
+  flex: 1;
+  min-width: 70px;
+}
+
+.verse-verse-input {
+  flex: 1;
+  min-width: 70px;
+}
+
+.add-verse-btn {
+  padding: 8px 16px;
+  background: #3b82f6;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.add-verse-btn:hover {
+  background: #2563eb;
+}
+
+.selected-verses-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+
+.selected-verse-tag {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  background: #f0fdf4;
+  color: #166534;
+  padding: 4px 10px;
+  border-radius: 16px;
+  font-size: 13px;
+  border: 1px solid #bbf7d0;
+}
+
+.selected-verse-tag .remove-verse {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  color: #166534;
+}
+
+.selected-verse-tag .remove-verse .icon {
+  width: 14px;
+  height: 14px;
+}
+
+.selected-verse-tag .remove-verse:hover {
+  color: #dc2626;
+}
+
+.form-help {
+  font-size: 12px;
+  color: #94a3b8;
+  margin-top: 4px;
+}
+
+.spin {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+
+/* styles/services.css */
+
+/* ✅ Position display - lecture seule */
+.position-display {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px 16px;
+  background: #f8fafc;
+  border-radius: 8px;
+  border: 1px solid #e2e8f0;
+  margin-bottom: 16px;
+}
+
+.position-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #64748b;
+}
+
+.position-value {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1e293b;
+  background: white;
+  padding: 2px 16px;
+  border-radius: 4px;
+  border: 1px solid #e2e8f0;
+  min-width: 40px;
+  text-align: center;
+}
+
+/* styles/services.css */
+
+/* ✅ Chapitre - Header */
+.chapter-item-wrapper {
+  margin: 4px 0;
+}
+
+.chapter-item-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 4px 8px;
+  background: #f8fafc;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.chapter-item-header:hover {
+  background: #f1f5f9;
+}
+
+.chapter-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 500;
+  color: #1e293b;
+}
+
+.chapter-count {
+  font-size: 12px;
+  color: #94a3b8;
+  font-weight: 400;
+}
+
+.chapter-expand-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 4px;
+  color: #94a3b8;
+  transition: transform 0.2s;
+}
+
+.chapter-expand-btn .icon {
+  width: 18px;
+  height: 18px;
+}
+
+.chapter-expand-btn .icon.rotated {
+  transform: rotate(90deg);
+}
+
+/* ✅ Chapitre - Liste des versets */
+.chapter-verses-container {
+  margin: 8px 0 8px 20px;
+  padding: 8px 12px;
+  background: #f8fafc;
+  border-radius: 6px;
+  border-left: 3px solid #3b82f6;
+  max-height: 300px;
+  overflow-y: auto;
+}
+
+.chapter-verses-list {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.chapter-verse-item {
+  display: flex;
+  gap: 8px;
+  padding: 2px 4px;
+  font-size: 13px;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.chapter-verse-item:last-child {
+  border-bottom: none;
+}
+
+.chapter-verse-number {
+  font-weight: 600;
+  color: #3b82f6;
+  min-width: 28px;
+  font-size: 12px;
+}
+
+.chapter-verse-text {
+  color: #334155;
+}

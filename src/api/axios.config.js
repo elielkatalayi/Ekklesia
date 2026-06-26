@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 // Configuration de base
-const BASE_URL = import.meta.env.VITE_API_URL || 'https://backendordechurch.onrender.com';
+const BASE_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
 const API_VERSION = import.meta.env.VITE_API_VERSION || '/api';
 
 // Créer l'instance Axios
