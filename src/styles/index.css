@@ -1,7 +1,7 @@
 /* ============================================
    STYLES GLOBAUX - CSS PUR
    ============================================ */
-
+RESPONSIVE
 /* Reset */
 * {
   margin: 0;
@@ -677,8 +677,21 @@ body {
     font-size: 14px;
   }
   
-  .sidebar-link span {
+  /* ✅ Afficher les icônes uniquement, cacher le texte */
+  .sidebar-link span:not(.icon) {
     display: none;
+  }
+  
+  /* ✅ Les icônes restent visibles */
+  .sidebar-link .icon {
+    width: 24px;
+    height: 24px;
+    font-size: 20px;
+  }
+  
+  .sidebar-link {
+    justify-content: center;
+    padding: 12px;
   }
   
   .layout-main {
@@ -695,28 +708,6 @@ body {
     font-size: 16px;
   }
 }
-
-/* Scrollbar */
-::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
-}
-
-::-webkit-scrollbar-track {
-  background: #f1f1f1;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb {
-  background: #8B4513;
-  border-radius: 10px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  background: #6f3710;
-}
-
-
 
 
 
